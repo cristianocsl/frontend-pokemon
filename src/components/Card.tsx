@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Avatar,
   Box,
@@ -6,12 +8,13 @@ import {
   Text,
   Stack,
   Image,
+  Link,
 } from '@chakra-ui/react';
 import { Pokemon } from '../getUrl/getData';
 
 interface CardProps {
   pokemon: Pokemon;
-};
+}
 
 export default function Card({ pokemon }: CardProps) {
   return (
@@ -60,7 +63,30 @@ export default function Card({ pokemon }: CardProps) {
             src={pokemon.sprites.front_default}
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'} >
-            <Text fontWeight={600} color={'card.deepPurple'}>Ver detalhes</Text>
+            <RouterLink to='/details'>
+              <Link
+                px={2}
+                py={1}
+                _hover={{
+                  textDecoration: 'none',
+                }}
+              >
+                <Text
+                  fontWeight={600}
+                  color={'card.deepPurple'}
+                  rounded={'md'}
+                  px={2}
+                  _hover={{
+                    // textDecoration: 'none',
+                    bg: 'card.deepPurple',
+                    color: 'card.bege',
+                    px: '2',
+                  }}
+                >
+                  Ver detalhes
+                </Text>
+              </Link>
+            </RouterLink>
           </Stack>
         </Stack>
       </Box>
