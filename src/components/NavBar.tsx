@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
@@ -12,7 +13,7 @@ export default function Simple() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('card.salmon', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
             <RouterLink to='/'>
@@ -22,8 +23,12 @@ export default function Simple() {
                 rounded={'md'}
                 _hover={{
                   textDecoration: 'none',
-                  bg: useColorModeValue('gray.200', 'gray.700'),
+                  bg: useColorModeValue('card.softPurple', 'white'),
+                  color: 'card.bege',
+                  fontWeight: '800'
                 }}
+                color='card.deepPurple'
+                fontWeight={800}
               >
                 Home
               </Link>
