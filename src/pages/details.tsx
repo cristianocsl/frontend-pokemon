@@ -60,13 +60,11 @@ export default function Details() {
     async function getData() {
       setLoading(true);
       const pokemon = await getPokemon(urlDetail(name));
-      console.log(pokemon);
       setDetails(pokemon);
       setLoading(false);
     }
     getData();
   }, [name]);
-  console.log(details);
 
   const renderLoading = () => {
     return (
