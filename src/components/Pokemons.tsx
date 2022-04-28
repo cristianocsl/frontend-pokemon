@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PromisePool from "@supercharge/promise-pool";
 import { getPokemonList, Pokemon, getPokemon, PokemonList } from '../getUrl/getData';
 import Card from './Card';
-import { Wrap, Button } from '@chakra-ui/react';
+import { Wrap, Button, Center, Box, Stack } from '@chakra-ui/react';
 
 const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 
@@ -33,16 +33,32 @@ const Pokemons: React.FC = () => {
       >
         {pokemonList.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
       </Wrap>
-      <Button
-        onClick={() => setNewUrl(pagination?.previous)}
-      >
-        Previous
-      </Button>
-      <Button
-        onClick={() => setNewUrl(pagination?.next)}
-      >
-        Next
-      </Button>
+      <Center py='12px'>
+        <Stack direction={'row'} spacing={5}>
+          <Button
+            color={'card.bege'}
+            onClick={() => setNewUrl(pagination?.previous)}
+            bg={'card.deepPurple'}
+            _hover={{
+              bg: 'card.softPurple',
+              color: 'card.bege',
+            }}
+          >
+            Previous
+          </Button>
+          <Button
+            color={'card.bege'}
+            onClick={() => setNewUrl(pagination?.next)}
+            bg={'card.deepPurple'}
+            _hover={{
+              bg: 'card.softPurple',
+              color: 'card.bege',
+            }}
+          >
+            Next
+          </Button>
+        </Stack>
+      </Center>
     </div>
   );
 }
