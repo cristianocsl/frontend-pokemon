@@ -9,10 +9,10 @@ import {
   Circle,
   Image,
   Center,
-  CircularProgress
 } from '@chakra-ui/react';
 import { useParams, Params } from 'react-router-dom';
 import { getPokemon, Pokemon } from '../getUrl/getData';
+import renderLoading from './renderLoading';
 
 const urlDetail = (name: string | undefined) => `https://pokeapi.co/api/v2/pokemon/${name}`;
 
@@ -26,16 +26,17 @@ function StatsCard(props: StatsCardProps) {
   return (
     <Stat
       px={{ base: 4, md: 8 }}
-      py={'5'}
-      shadow={'xl'}
-      border={'2px solid'}
-      borderColor='card.salmon'
-      bg='card.deepPurple'
-      rounded={'lg'}>
-      <StatLabel fontWeight={'medium'} isTruncated color={'card.bege'}>
+      py="5"
+      shadow="xl"
+      border="2px solid"
+      borderColor="card.salmon"
+      bg="card.deepPurple"
+      rounded="lg"
+    >
+      <StatLabel fontWeight="medium" isTruncated color="card.salmon">
         {title}
       </StatLabel>
-      <StatNumber fontSize={'2xl'} fontWeight={'medium'} color={'card.salmon'}>
+      <StatNumber fontSize="2xl" fontWeight="medium" color="card.softBlue">
         {stat}
       </StatNumber>
     </Stat>
@@ -49,7 +50,6 @@ export default function Details() {
 
   useEffect(() => {
     async function getData() {
-      setLoading(true);
       const pokemon = await getPokemon(urlDetail(name));
       setDetails(pokemon);
       setLoading(false);
@@ -57,46 +57,42 @@ export default function Details() {
     getData();
   }, [name]);
 
-  const renderLoading = () => {
-    return (
-      <Center py='100px'>
-        <CircularProgress isIndeterminate color='card.deepPurple' size='200px' />
-      </Center>)};
-  
   if (loading) return renderLoading();
   return (
-    <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+    <Box maxW="7xl" mx="auto" pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
+        textAlign="center"
+        fontSize="4xl"
         py={10}
-        fontWeight={'bold'}
-        textTransform='uppercase'
-        color={'red.600'}
+        fontWeight="bold"
+        textTransform="uppercase"
+        color="red.600"
       >
         {details.name}
       </chakra.h1>
       <Center>
-        <Circle bg='tomato' size='300px'>
+        <Circle bg="tomato" size="300px">
           <Image
-            src={details.sprites.front_default} alt='imagem'
+            src={details.sprites.front_default}
+            alt="imagem"
             height={300}
           />
         </Circle>
       </Center>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatsCard
-          title={'abilities'}
+          title="abilities"
           stat={`1-${details.abilities[0].ability.name} 2-${details.abilities[1].ability.name}`}
         />
-        <StatsCard title={'height'} stat={ details.height.toString() } />
-        <StatsCard title={'base experience'} stat={ details.base_experience.toString() } />
+        <StatsCard title="height" stat={details.height.toString()} />
+        <StatsCard title="base experience" stat={details.base_experience.toString()} />
         {
           details.stats.map((statInfo: any) => (
             <StatsCard
-              title={'stat name / base stat / effort'}
-              stat={`${statInfo.stat.name} / ${statInfo.base_stat} / ${statInfo.effort}`} />
-            ))
+              title="stat name / base stat / effort"
+              stat={`${statInfo.stat.name} / ${statInfo.base_stat} / ${statInfo.effort}`}
+            />
+          ))
         }
       </SimpleGrid>
     </Box>
