@@ -72,8 +72,6 @@ export default function Details() {
         <CircularProgress isIndeterminate color='card.deepPurple' size='200px' />
       </Center>)};
   
-  // const pokAbilities = details.abilities[0].ability.name + ' ' + details.abilities[1].ability.name;
-  
   if (loading) return renderLoading();
   return (
     <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
