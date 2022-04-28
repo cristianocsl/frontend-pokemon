@@ -4,12 +4,16 @@ import { getPokemonList, Pokemon, getPokemon, PokemonList } from '../getUrl/getD
 import Card from './Card';
 import { Wrap, Button } from '@chakra-ui/react';
 
+const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
+
 const Pokemons: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [pagination, setPagination] = useState<PokemonList>();
+  const [newUrl, setNewUrl] = useState<string | undefined | null>(url);
+  
   useEffect(() => {
     async function getData() {
-      const listOf = await getPokemonList();
+      const listOf = await getPokemonList(newUrl as any);
       setPagination(listOf);
       const data = await PromisePool.withConcurrency(2)
         .for(listOf.results)
@@ -19,7 +23,7 @@ const Pokemons: React.FC = () => {
       setPokemonList(data.results);
     }
     getData();
-  }, []);
+  }, [newUrl]);
 
   return (
     <div>
@@ -29,10 +33,14 @@ const Pokemons: React.FC = () => {
       >
         {pokemonList.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
       </Wrap>
-      <Button>
+      <Button
+        onClick={() => setNewUrl(pagination?.previous)}
+      >
         Previous
       </Button>
-      <Button>
+      <Button
+        onClick={() => setNewUrl(pagination?.next)}
+      >
         Next
       </Button>
     </div>
