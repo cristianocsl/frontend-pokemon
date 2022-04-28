@@ -10,19 +10,10 @@ import {
   Image,
   useColorModeValue,
   Center,
-  Avatar,
   CircularProgress
 } from '@chakra-ui/react';
 import { useParams, Params } from 'react-router-dom';
 import { getPokemon, Pokemon } from '../getUrl/getData';
-
-// interface DetailOne {
-//   id: number;
-//   name: string;
-//   sprites: {
-//     front_default: string;
-//   };
-// }
 
 const urlDetail = (name: string | undefined) => `https://pokeapi.co/api/v2/pokemon/${name}`;
 
