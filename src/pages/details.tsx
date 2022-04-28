@@ -29,10 +29,10 @@ function StatsCard(props: StatsCardProps) {
       py={'5'}
       shadow={'xl'}
       border={'2px solid'}
-      borderColor='tomato'
+      borderColor='card.salmon'
       bg='card.deepPurple'
       rounded={'lg'}>
-      <StatLabel fontWeight={'medium'} isTruncated color={'card.softPurple'}>
+      <StatLabel fontWeight={'medium'} isTruncated color={'card.bege'}>
         {title}
       </StatLabel>
       <StatNumber fontSize={'2xl'} fontWeight={'medium'} color={'card.salmon'}>
