@@ -8,7 +8,6 @@ import {
   StatNumber,
   Circle,
   Image,
-  useColorModeValue,
   Center,
   CircularProgress
 } from '@chakra-ui/react';
@@ -29,13 +28,14 @@ function StatsCard(props: StatsCardProps) {
       px={{ base: 4, md: 8 }}
       py={'5'}
       shadow={'xl'}
-      border={'1px solid'}
-      borderColor={useColorModeValue('gray.800', 'gray.500')}
+      border={'2px solid'}
+      borderColor='tomato'
+      bg='card.deepPurple'
       rounded={'lg'}>
-      <StatLabel fontWeight={'medium'} isTruncated>
+      <StatLabel fontWeight={'medium'} isTruncated color={'card.softPurple'}>
         {title}
       </StatLabel>
-      <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+      <StatNumber fontSize={'2xl'} fontWeight={'medium'} color={'card.salmon'}>
         {stat}
       </StatNumber>
     </Stat>
@@ -72,7 +72,7 @@ export default function Details() {
         py={10}
         fontWeight={'bold'}
         textTransform='uppercase'
-        color={'card.deepPurple'}
+        color={'red.600'}
       >
         {details.name}
       </chakra.h1>
