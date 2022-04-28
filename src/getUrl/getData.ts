@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { urlWithLimit } from './urlApi';
 
 export interface PokemonList {
   count: number;
@@ -34,10 +33,8 @@ export interface Pokemon {
   }[];
 }
 
-const LIMIT = 10;
-
-export const getPokemonList = async (): Promise<PokemonList> => {
-  const { data } = await axios.get(urlWithLimit(LIMIT));
+export const getPokemonList = async (url: string): Promise<PokemonList> => {
+  const { data } = await axios.get(url);
   return data;
 };
 
