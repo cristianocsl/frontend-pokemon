@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PromisePool from "@supercharge/promise-pool";
 import { getPokemonList, Pokemon, getPokemon, PokemonList } from '../getUrl/getData';
 import Card from './Card';
-import { Wrap } from '@chakra-ui/react';
+import { Wrap, Button } from '@chakra-ui/react';
 
 const Pokemons: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
@@ -21,20 +21,20 @@ const Pokemons: React.FC = () => {
     getData();
   }, []);
 
-  console.log(pagination);
   return (
     <div>
       <Wrap
         py={[0, 3]}
         justify='center'
       >
-        {pokemonList.map((pokemon) => (
-          <Card key={pokemon.id} pokemon={pokemon} />
-          ))}
+        {pokemonList.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
       </Wrap>
-      <a href={pagination?.next}>
-        CLIQUE
-      </a>
+      <Button>
+        Previous
+      </Button>
+      <Button>
+        Next
+      </Button>
     </div>
   );
 }
