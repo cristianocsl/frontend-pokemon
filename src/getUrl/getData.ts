@@ -14,6 +14,13 @@ export interface PokemonList {
 export interface Pokemon {
   id: number;
   name: string;
+  height: number;
+  base_experience: number;
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
   sprites: {
     front_default: string;
   };
@@ -35,6 +42,6 @@ export const getPokemonList = async (): Promise<PokemonList> => {
 };
 
 export const getPokemon = async (url: string): Promise<Pokemon> => {
-  const { data } = await axios.get(url);
+  const { data } = await axios.get<Pokemon>(url);
   return data;
 };
