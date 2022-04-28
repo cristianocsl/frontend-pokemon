@@ -6,6 +6,7 @@ const theme = extendTheme({
       transparent: 'transparent',
       cyan: '#50B2C0',
       salmon: '#FAAA8D',
+      softBlue: '#e2e4f6',
       gray: '#201E1F',
       red: '#FF4000',
       green: '#20525A',
