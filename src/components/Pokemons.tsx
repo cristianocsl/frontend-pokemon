@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PromisePool from "@supercharge/promise-pool";
 import { getPokemonList, Pokemon, getPokemon, PokemonList } from '../getUrl/getData';
 import Card from './Card';
-import { Wrap, Button, Center, Box, Stack } from '@chakra-ui/react';
+import { Wrap, Button, Center, Stack } from '@chakra-ui/react';
 
 const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 
