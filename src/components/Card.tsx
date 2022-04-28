@@ -20,49 +20,53 @@ export default function Card({ pokemon }: CardProps) {
   return (
     <Center>
       <Box
-        maxW={'230px'}
-        w={'full'}
-        bg={'card.softPurple'}
-        boxShadow={'2xl'}
-        rounded={'md'}
+        maxW="230px"
+        w="full"
+        bg="card.softPurple"
+        boxShadow="2xl"
+        rounded="md"
         p={6}
-        overflow={'hidden'}>
+        overflow="hidden"
+      >
         <Box
-          alignItems='center'
-          h={'210px'}
-          bg={'card.purple'}
+          alignItems="center"
+          h="210px"
+          bg="card.purple"
           mt={-6}
           mx={-6}
           mb={6}
-          pos={'relative'}>
+          pos="relative"
+        >
           <Image
             height={230}
             width={230}
-            src={pokemon.sprites.front_default}        
-            />
+            src={pokemon.sprites.front_default}
+          />
         </Box>
         <Stack>
           <Text
-            color={'card.purple'}
+            color="card.purple"
             fontWeight={800}
-            fontSize={'sm'}
-            letterSpacing={1.1}>
+            fontSize="sm"
+            letterSpacing={1.1}
+          >
             Pokemon
           </Text>
           <Heading
-            color={'card.gray'}
-            fontSize={'2xl'}
-            textTransform='uppercase'
-            fontFamily={'body'}>
+            color="card.gray"
+            fontSize="2xl"
+            textTransform="uppercase"
+            fontFamily="body"
+          >
             {pokemon.name}
           </Heading>
 
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+        <Stack mt={6} direction="row" spacing={4} align="center">
           <Avatar
             src={pokemon.sprites.front_default}
           />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'} >
+          <Stack direction="column" spacing={0} fontSize="sm">
             <RouterLink to={`/${pokemon.name}`}>
               <Link
                 px={2}
@@ -70,11 +74,12 @@ export default function Card({ pokemon }: CardProps) {
                 _hover={{
                   textDecoration: 'none',
                 }}
+                href={`/${pokemon.name}`}
               >
                 <Text
                   fontWeight={600}
-                  color={'card.deepPurple'}
-                  rounded={'md'}
+                  color="card.deepPurple"
+                  rounded="md"
                   px={2}
                   _hover={{
                     bg: 'card.deepPurple',

@@ -8,11 +8,11 @@ import Pokemons from './components/Pokemons';
 import NavBar from './components/NavBar';
 import Details from './pages/details';
 
-const App: React.FC = () => {
+export default function App() {
   return (
     <div>
       <Router>
-      <NavBar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Pokemons />} />
           <Route path="/:name" element={<Details />} />
@@ -21,5 +21,3 @@ const App: React.FC = () => {
     </div>
   );
 }
-
-export default App;
