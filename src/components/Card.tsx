@@ -63,7 +63,7 @@ export default function Card({ pokemon }: CardProps) {
             src={pokemon.sprites.front_default}
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'} >
-            <RouterLink to='/details'>
+            <RouterLink to={`/${pokemon.name}`}>
               <Link
                 px={2}
                 py={1}
@@ -77,7 +77,6 @@ export default function Card({ pokemon }: CardProps) {
                   rounded={'md'}
                   px={2}
                   _hover={{
-                    // textDecoration: 'none',
                     bg: 'card.deepPurple',
                     color: 'card.bege',
                     px: '2',
