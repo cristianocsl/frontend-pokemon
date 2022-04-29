@@ -5,7 +5,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -15,7 +14,7 @@ export default function Simple() {
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <HStack spacing={8} alignItems="center">
           <RouterLink to="/">
-            <Link
+            <Box
               px={2}
               py={1}
               rounded="md"
@@ -27,10 +26,9 @@ export default function Simple() {
               }}
               color="card.deepPurple"
               fontWeight={800}
-              href="/"
             >
               Home
-            </Link>
+            </Box>
           </RouterLink>
         </HStack>
         <Flex alignItems="center">

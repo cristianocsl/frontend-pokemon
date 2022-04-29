@@ -8,7 +8,6 @@ import {
   Text,
   Stack,
   Image,
-  Link,
 } from '@chakra-ui/react';
 import { Pokemon } from '../getUrl/getData';
 
@@ -68,13 +67,12 @@ export default function Card({ pokemon }: CardProps) {
           />
           <Stack direction="column" spacing={0} fontSize="sm">
             <RouterLink to={`/${pokemon.name}`}>
-              <Link
+              <Box
                 px={2}
                 py={1}
                 _hover={{
                   textDecoration: 'none',
                 }}
-                href={`/${pokemon.name}`}
               >
                 <Text
                   fontWeight={600}
@@ -89,7 +87,7 @@ export default function Card({ pokemon }: CardProps) {
                 >
                   Ver detalhes
                 </Text>
-              </Link>
+              </Box>
             </RouterLink>
           </Stack>
         </Stack>
