@@ -21,7 +21,7 @@ export default function Pokemons() {
     async function getData() {
       const listOf = await getPokemonList(newUrl as string);
       setPagination(listOf);
-      const data = await PromisePool.withConcurrency(3)
+      const data = await PromisePool.withConcurrency(10)
         .for(listOf.results)
         .process(async (pokData) => getPokemon(pokData.url));
       setPokemonList(data.results);
