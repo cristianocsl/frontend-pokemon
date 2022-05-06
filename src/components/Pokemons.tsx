@@ -19,9 +19,9 @@ export default function Pokemons() {
 
   useEffect(() => {
     async function getData() {
-      const listOf = await getPokemonList(newUrl as any);
+      const listOf = await getPokemonList(newUrl as string);
       setPagination(listOf);
-      const data = await PromisePool.withConcurrency(2)
+      const data = await PromisePool.withConcurrency(3)
         .for(listOf.results)
         .process(async (pokData) => getPokemon(pokData.url));
       setPokemonList(data.results);
@@ -43,6 +43,7 @@ export default function Pokemons() {
         <Stack direction="row" spacing={5}>
           <Button
             color="card.bege"
+            disabled={pagination?.previous === null}
             onClick={() => setNewUrl(pagination?.previous)}
             bg="card.deepPurple"
             _hover={{
