@@ -89,6 +89,7 @@ export default function Details() {
         {
           details.stats.map((statInfo: any) => (
             <StatsCard
+              key={statInfo.stat.name}
               title="stat name / base stat / effort"
               stat={`${statInfo.stat.name} / ${statInfo.base_stat} / ${statInfo.effort}`}
             />
