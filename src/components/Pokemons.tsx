@@ -45,9 +45,19 @@ export default function Pokemons() {
       }
     });
 
-    const element = document.querySelector('#loadMore');
-    if (element !== null) {
-      intersectionObserver.observe(element);
+    const element = document.getElementById('loadMore');
+
+    if (element) {
+      const getElement = element?.outerHTML;
+      localStorage.setItem('divElement', getElement as unknown as string);
+      intersectionObserver.observe(element as unknown as HTMLElement);
+    } else {
+      const newDiv = document.createElement('div');
+      newDiv.id = 'loadMore';
+      newDiv.style.height = '10px';
+      const root = document.getElementById('root');
+      root?.appendChild(newDiv);
+      intersectionObserver.observe(newDiv as unknown as HTMLElement);
     }
 
     return () => intersectionObserver.disconnect();
@@ -55,7 +65,7 @@ export default function Pokemons() {
 
   if (loading) return renderLoading();
   return (
-    <div>
+    <div id="container">
       <Wrap
         py={[0, 3]}
         justify="center"
@@ -89,7 +99,7 @@ export default function Pokemons() {
           </Button>
         </Stack>
       </Center>
-      <div id="loadMore" style={{ width: '100%', height: '4px' }} />
+      <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} />
     </div>
   );
 }
