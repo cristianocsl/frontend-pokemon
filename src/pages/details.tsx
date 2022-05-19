@@ -14,7 +14,7 @@ import { useParams, Params } from 'react-router-dom';
 import { getPokemon, Pokemon } from '../getUrl/getData';
 import renderLoading from './renderLoading';
 
-const urlDetail = (name: string | undefined) => `https://pokeapi.co/api/v2/pokemon/${name}`;
+const urlDetail = (name: string | undefined): string | undefined => `https://pokeapi.co/api/v2/pokemon/${name}`;
 
 interface StatsCardProps {
   title: string;
