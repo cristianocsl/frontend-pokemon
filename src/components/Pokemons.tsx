@@ -14,21 +14,44 @@ const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 export default function Pokemons() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [pagination, setPagination] = useState<PokemonList>();
-  const [newUrl, setNewUrl] = useState<string | undefined | null>(url);
+  const [counter, setCounter] = useState<number>(10);
+  const [newUrl, setNewUrl] = useState<string | undefined>(url);
   const [loading, setLoading] = useState(true);
 
+  const getUrl = (limit: number): string => `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limit}`;
+
+  async function getData(optionalUrl: string | undefined) {
+    const listOf = await getPokemonList(optionalUrl);
+    setPagination(listOf);
+    const data = await PromisePool.withConcurrency(10)
+      .for(listOf.results)
+      .process(async (pokData) => getPokemon(pokData.url));
+    setPokemonList(data.results);
+    setLoading(false);
+  }
+
   useEffect(() => {
-    async function getData() {
-      const listOf = await getPokemonList(newUrl as string);
-      setPagination(listOf);
-      const data = await PromisePool.withConcurrency(10)
-        .for(listOf.results)
-        .process(async (pokData) => getPokemon(pokData.url));
-      setPokemonList(data.results);
-      setLoading(false);
-    }
-    getData();
+    getData(newUrl);
   }, [newUrl]);
+
+  useEffect(() => {
+    getData(getUrl(counter));
+  }, [counter]);
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setCounter((prevState) => prevState + 10);
+      }
+    });
+
+    const element = document.querySelector('#loadMore');
+    if (element !== null) {
+      intersectionObserver.observe(element);
+    }
+
+    return () => intersectionObserver.disconnect();
+  }, []);
 
   if (loading) return renderLoading();
   return (
@@ -66,6 +89,7 @@ export default function Pokemons() {
           </Button>
         </Stack>
       </Center>
+      <div id="loadMore" style={{ width: '100%', height: '4px' }} />
     </div>
   );
 }
