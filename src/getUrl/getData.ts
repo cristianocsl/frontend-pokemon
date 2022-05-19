@@ -3,7 +3,7 @@ import axios from 'axios';
 export interface PokemonList {
   count: number;
   next: string;
-  previous?: string | null;
+  previous?: string | undefined;
   results: {
     name: string;
     url: string;
@@ -33,12 +33,12 @@ export interface Pokemon {
   }[];
 }
 
-export const getPokemonList = async (url: string): Promise<PokemonList> => {
-  const { data } = await axios.get(url);
+export const getPokemonList = async (url: string | undefined): Promise<PokemonList> => {
+  const { data } = await axios.get(url as string);
   return data;
 };
 
-export const getPokemon = async (url: string): Promise<Pokemon> => {
-  const { data } = await axios.get<Pokemon>(url);
+export const getPokemon = async (url: string | undefined): Promise<Pokemon> => {
+  const { data } = await axios.get<Pokemon>(url as string);
   return data;
 };
