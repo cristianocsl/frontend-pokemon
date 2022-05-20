@@ -48,8 +48,6 @@ export default function Pokemons() {
     const element = document.getElementById('loadMore');
 
     if (element) {
-      const getElement = element?.outerHTML;
-      localStorage.setItem('divElement', getElement as unknown as string);
       intersectionObserver.observe(element as unknown as HTMLElement);
     } else {
       const newDiv = document.createElement('div');
@@ -57,7 +55,6 @@ export default function Pokemons() {
       newDiv.style.height = '10px';
       const root = document.getElementById('root');
       root?.appendChild(newDiv);
-      intersectionObserver.observe(newDiv as unknown as HTMLElement);
     }
 
     return () => intersectionObserver.disconnect();
