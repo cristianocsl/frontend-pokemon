@@ -47,8 +47,6 @@ export default function Pokemons() {
 
     const element = document.getElementById('loadMore');
 
-    console.log('element >>', element);
-
     if (element) {
       intersectionObserver.observe(element as unknown as HTMLElement);
     } else {
