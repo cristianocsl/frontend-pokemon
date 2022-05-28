@@ -8,7 +8,7 @@ import {
 } from '../getUrl/getData';
 import Card from './Card';
 import renderLoading from '../pages/renderLoading';
-import LoadMore from './loadMore';
+// import LoadMore from './loadMore';
 
 const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 
@@ -88,6 +88,7 @@ export default function Pokemons() {
             Previous
           </Button>
           <Button
+            id="loadMore"
             color="card.bege"
             onClick={() => setNewUrl(pagination?.next)}
             bg="card.deepPurple"
@@ -101,7 +102,7 @@ export default function Pokemons() {
         </Stack>
       </Center>
       {/* <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} /> */}
-      <LoadMore />
+      {/* <LoadMore /> */}
     </div>
   );
 }
