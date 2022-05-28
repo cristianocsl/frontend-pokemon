@@ -8,7 +8,6 @@ import {
 } from '../getUrl/getData';
 import Card from './Card';
 import renderLoading from '../pages/renderLoading';
-// import LoadMore from './loadMore';
 
 const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 
@@ -48,16 +47,15 @@ export default function Pokemons() {
 
     const element = document.getElementById('loadMore');
 
-    console.log('element >> ', element);
+    console.log('element >>', element);
 
     if (element) {
       intersectionObserver.observe(element as unknown as HTMLElement);
-    } else if (element === null) {
+    } else {
       const newDiv = document.createElement('div');
       newDiv.id = 'loadMore';
       newDiv.style.height = '10px';
       const root = document.getElementById('root');
-      console.log('root >> ', root);
       root?.appendChild(newDiv);
     }
 
@@ -88,7 +86,6 @@ export default function Pokemons() {
             Previous
           </Button>
           <Button
-            id="loadMore"
             color="card.bege"
             onClick={() => setNewUrl(pagination?.next)}
             bg="card.deepPurple"
@@ -101,8 +98,7 @@ export default function Pokemons() {
           </Button>
         </Stack>
       </Center>
-      {/* <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} /> */}
-      {/* <LoadMore /> */}
+      <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} />
     </div>
   );
 }
