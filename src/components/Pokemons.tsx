@@ -8,6 +8,7 @@ import {
 } from '../getUrl/getData';
 import Card from './Card';
 import renderLoading from '../pages/renderLoading';
+import LoadMore from './loadMore';
 
 const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10';
 
@@ -99,7 +100,8 @@ export default function Pokemons() {
           </Button>
         </Stack>
       </Center>
-      <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} />
+      {/* <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} /> */}
+      <LoadMore />
     </div>
   );
 }
