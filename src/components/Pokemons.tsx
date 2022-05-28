@@ -56,6 +56,7 @@ export default function Pokemons() {
       newDiv.id = 'loadMore';
       newDiv.style.height = '10px';
       const root = document.getElementById('root');
+      console.log('root >> ', root);
       root?.appendChild(newDiv);
     }
 
