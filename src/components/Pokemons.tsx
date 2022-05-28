@@ -51,7 +51,7 @@ export default function Pokemons() {
 
     if (element) {
       intersectionObserver.observe(element as unknown as HTMLElement);
-    } else {
+    } else if (element === null) {
       const newDiv = document.createElement('div');
       newDiv.id = 'loadMore';
       newDiv.style.height = '10px';
