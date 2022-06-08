@@ -45,17 +45,16 @@ export default function Pokemons() {
       }
     });
 
-    const element = document.getElementById('loadMore');
+    let element = document.getElementById('loadMore');
 
-    if (element) {
-      intersectionObserver.observe(element as unknown as HTMLElement);
-    } else {
-      const newDiv = document.createElement('div');
-      newDiv.id = 'loadMore';
-      newDiv.style.height = '10px';
+    if (!element) {
+      element = document.createElement('div');
+      element.id = 'loadMore';
+      element.style.height = '10px';
       const root = document.getElementById('root');
-      root?.appendChild(newDiv);
+      root?.appendChild(element);
     }
+    intersectionObserver.observe(element as unknown as HTMLElement);
 
     return () => intersectionObserver.disconnect();
   }, []);
