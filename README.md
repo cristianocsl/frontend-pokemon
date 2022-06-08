@@ -3,7 +3,7 @@
 
 ## Contexto
 
-Aplicação front-end desenvolvida com React, TypeScript e Chakra UI para listar pokemons da [PokeApi](https://pokeapi.co/) e seus detalhes.
+Aplicação front-end com páginação e scroll infinito utilizando React, TypeScript e Chakra UI para listar pokemons da [PokeApi](https://pokeapi.co/) a partir da página principal e mostrar seus detalhes na página de detalhes.
 
 #### Veja a aplicação no ar neste link: https://my-pokemon-theta.vercel.app/
 
