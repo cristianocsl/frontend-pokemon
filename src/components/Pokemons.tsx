@@ -95,7 +95,7 @@ export default function Pokemons() {
           </Button>
         </Stack>
       </Center>
-      <div id="loadMore" style={{ width: '100%', height: '10px', background: 'blue' }} />
+      <div id="loadMore" style={{ width: '100%', height: '10px', background: '#FEEFDD' }} />
     </div>
   );
 }
