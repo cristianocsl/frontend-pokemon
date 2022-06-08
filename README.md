@@ -5,6 +5,8 @@
 
 Aplicação front-end desenvolvida com React, TypeScript e Chakra UI para listar pokemons da [PokeApi](https://pokeapi.co/) e seus detalhes.
 
+### Veja a aplicação no ar neste link: (https://my-pokemon-theta.vercel.app/)
+
 ## Instruções para rodar o projeto localmente
 
 1. abra o terminal e clone o repositório do projeto frontend_todolist:
